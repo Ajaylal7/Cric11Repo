@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.patternMatcher" value="namedVariable"/>
+    
+   
+	<package name="cric11" namespace="/cric11" extends="struts-default">
+		<action name="auth/register" class="com.cric11.user.UserRegistration"></action>
+		<action name="auth/login" class="com.cric11.user.UserLogin"></action>
+		<action name="auth/verifyemail" class="com.cric11.user.UserEmailVerify">
+			<result type="redirect" name="success">${resultUrl}</result>
+		</action>
+		<action name="auth/token" class="com.cric11.authentication.JWTClass"></action>
+		<action name="load/cricketTeam" class="com.cric11.teamdata.CricketTeamLoad"/>	
+		<action name="load/cricketMatch" class="com.cric11.teamdata.MatchData"/>
+		<action name="load/sampledata" class="com.cric11.sample.SampleJSON"></action>
+		<action name="check/criteria" class="com.cric11.sample.SampleJSON" method="checkTime"></action>
+		
+		<action name="main/getdata" class="com.cric11.trade.MainClass"></action>
+		
+		<action name="main/getdata1" class="com.cric11.trade.MainClass" method="checkInv"></action>
+		
+		<action name="main/start" class="com.cric11.trade.StartCollecting"></action>
+		
+		<action name="main/analysis" class="com.cric11.trade.StartCollectingInv" method="startAnalysis"></action>
+	
+	
+		<action name="main/start1" class="com.cric11.trade.StartCollectingInv"></action>
+		
+		<action name="main/starteco" class="com.cric11.trade.StartCollectingEco"></action>
+		
+		<action name="api/data" class="com.cric11.trade.ApiResponse"/>
+		
+		<action name="api/highb" class="com.cric11.trade.InvClass" method="dayFirstHighBreak"/>
+				<action name="api/highbown" class="com.cric11.trade.InvClass" method="dayFirstHighBreakOwn"/>
+		<action name="api/nifty" class="com.cric11.trade.InvClass" method="dayFirstHighBreakOwnNifty"/>
+		<action name="api/breakers" class= "com.cric11.trade.InvClass" method = "prevoiusDayBreaker"/>
+		<action name="api/breakersown" class= "com.cric11.trade.InvClass" method = "prevoiusDayBreakerOwn"/>
+			
+		<!-- <action name="api/{version}/login" class="com.cric11.utility.MatchSquad"></action>
+		
+		<action name="api/{version}/check" class="com.cric11.utility.MatchSquad" method="stringCheck"></action>
+		<action name="api/{version}/timercheck" class="com.cric11.utility.MatchSquad" method="timerCheck"></action>
+		<action name="api/{version}/sendemail" class="com.cric11.user.VerifyUser"></action> -->
+	</package>
+</struts>

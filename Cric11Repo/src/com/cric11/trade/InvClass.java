@@ -30,7 +30,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class InvClass extends ActionSupport implements ServletRequestAware,ServletResponseAware,Job {
 	
-	private HttpServletRequest request;
+	private HttpServletRequest request,a;
 	
 	private HttpServletResponse response;
 	
